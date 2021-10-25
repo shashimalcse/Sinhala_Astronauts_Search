@@ -22,7 +22,9 @@ The corpus contains Astronauts details with the following parameters. The corpus
 3. Run ```docker exec -it web bash -c "python3 utils/wiki_scrap.py; bash"``` to put the corpus to the Elasticsearch.
 4. Now you can create requests to below-mentioned endpoints.
 
-#### Endpoints and techniques used in designing indexing and querying
+#### Endpoints and techniques used in designing indexing and querying (Also you can find those endpoints in postman collection. ([Postman_collection](web/Sinhala-Astronauts-Search.postman_collection.json))
+)
+
 
 | Endpoint  | Request Type | Functionality | Example |
 | ------------- | ------------- | ---------- | -----------|
@@ -32,5 +34,3 @@ The corpus contains Astronauts details with the following parameters. The corpus
 | /searchBy/missions  | GET  | Search by mission names  |  /searchBy/missions?missions=STS-119,Soyuz TM-12 |
 | /facetedSearch  | POST  | After selecting filters from received facets request to this with the term and selected filters  |  /facetedSearch { "term": "1960-08-26", "filter" : [ {"Nationality" : "ඇමෙරිකානු"}, {"Occupation": "නියමු"}]}  | 
 | /advanceSearch  | POST  | Search with given set of fields including range of birthday and space time  |  /advanceSearch { "filter" : [ {"keyword" : "Nationality", "value": "ඇමෙරිකානු" },{"keyword" : "Status", "value": "විශ්රාමික" } ], "ranges": [ {"keyword" : "Time", "range": {"gte" : 0, "lte": 12000} }, {"keyword" : "BDay", "range": {"gte" : "1920-08-05", "lte": "1970-08-05"} }]} |
-
-Also you can find those endpoints in postman collection. ([Sinhala-Astronauts-Search.postman_collection.json](web/Sinhala-Astronauts-Search.postman_collection.json))
