@@ -13,7 +13,29 @@ def send_data():
     print('Elastic host is {}'.format(es_host))
     es = Elasticsearch([es_host])
     es.indices.delete(index="astronauts")
-    es.indices.create(index="astronauts")
+    try:
+        request_body = {
+                "settings" : {
+                    "number_of_shards": 5,
+                    "number_of_replicas": 1
+                },
+
+                'mappings': {
+                        'properties': {
+                            'Name': {'index': True, 'type': 'text'},
+                            'BDay': {'type': 'date','format':'yyyy-MM-dd'},
+                            'Status': {'type': 'text'},
+                            'Nationality': {'type': 'text'},
+                            'Time': {'type': 'integer'},
+                            'Mission_names': {'type': 'keyword'},
+                            'Selection': {'type': 'text'},
+                            'Occupation': {'type': 'text'},
+                            'Summary': {'type': 'text'},
+                        }}
+            }
+        es.indices.create(index='astronauts',body=request_body)
+    except Exception as e:
+        print(e) 
     df = pd.read_csv('./astronauts_sinhala.csv')
     pat = r'(?P<days>(\d+)(\sdays))? ?(?P<hours>(\d+)(\shours))? ?(?P<minutes>(\d+)(\sminutes))?'
     pat1 = r'(?P<d>(\d+)(d))? ?(?P<h>(\d+)(h))? ?(?P<min>(\d+)(min))?'
@@ -40,6 +62,7 @@ def send_data():
         mission_names = mission_names.strip()
         mission_names = mission_names[2:-2]
         mission_names = mission_names.split(',')
+        mission_names =  [name.strip() for name in mission_names]
         selection = df['selection'][i]
         occupation = df['occupation'][i]
         summary = df['summary'][i]
@@ -54,8 +77,10 @@ def send_data():
                 'Occupation' : occupation,
                 'Summary' : summary
         }
+
         try:
-            es.index(index='astronauts', doc_type='astronaut', id=i, body=song_obj)
+            es.index(index='astronauts', id=i, body=song_obj)
+            
         except Exception as e:
                 print(e)
 def get_time(result,time):

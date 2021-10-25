@@ -36,6 +36,14 @@ def searchby_bday():
 def searchby_time():
     lt = request.args.get('lt')
     gt = request.args.get('gt')
-    return search_by.search_by_time(es,lt,gt)        
+    return search_by.search_by_time(es,lt,gt)      
+@app.route('/facetedSearch', methods=['GET', 'POST'])
+def faceted_search():                                                                                                                              
+    data = request.get_json()
+    return search_by.search_by_faceted(es,data)      
+@app.route('/advanceSearch', methods=['GET', 'POST'])
+def advance_search():                                                                                                                              
+    data = request.get_json()
+    return search_by.advanced_search(es,data)      
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')

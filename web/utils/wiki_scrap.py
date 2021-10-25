@@ -113,3 +113,5 @@ if __name__ == '__main__':
             translate_corpus()
     else:
         create_corpus()
+        translate_corpus()
+        elastic_search_send.send_data()
