@@ -22,8 +22,7 @@ The corpus contains Astronauts details with the following parameters. The corpus
 3. Run ```docker exec -it web bash -c "python3 utils/wiki_scrap.py; bash"``` to put the corpus to the Elasticsearch.
 4. Now you can create requests to below-mentioned endpoints.
 
-#### Endpoints and techniques used in designing indexing and querying (Also you can find those endpoints in postman collection. ([Postman_collection](web/Sinhala-Astronauts-Search.postman_collection.json))
-)
+#### Endpoints and techniques used in designing indexing and querying (Also you can find those endpoints in postman collection. - [Postman_collection](web/Sinhala-Astronauts-Search.postman_collection.json))
 
 
 | Endpoint  | Request Type | Functionality | Example |
