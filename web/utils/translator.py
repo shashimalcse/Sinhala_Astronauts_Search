@@ -4,6 +4,7 @@ import json
 import csv
 import pandas as pd
 import time
+import numpy as np
 
 def clean_data(df):
     allowed_status = ["Active","Retired","Deceased"]

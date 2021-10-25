@@ -9,9 +9,9 @@ import translator
 import elastic_search_send
 def create_corpus():
     astronauts = wikipedia.page("List of astronauts by name").content
-    pattern = '^== [A-B] ==$'
+    pattern = '^== [A-E] ==$'
     name_pattern = '^[A-Z]+[a-z]+$'
-    fold = 2
+    fold = 5
     count = 0
     lines = astronauts.split('\n')
     names = []

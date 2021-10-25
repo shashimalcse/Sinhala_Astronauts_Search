@@ -1,0 +1,181 @@
+{
+	"info": {
+		"_postman_id": "66a778e4-5c31-42c6-886d-0e590f1b8dd4",
+		"name": "DM",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "search by term",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/searchBy/param?searchby=Summary&term=ඔහු",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"searchBy",
+						"param"
+					],
+					"query": [
+						{
+							"key": "searchby",
+							"value": "Summary"
+						},
+						{
+							"key": "term",
+							"value": "ඔහු"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "bday range",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/searchBy/bday?to=1968-08-05&from=1930-08-05",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"searchBy",
+						"bday"
+					],
+					"query": [
+						{
+							"key": "to",
+							"value": "1968-08-05"
+						},
+						{
+							"key": "from",
+							"value": "1930-08-05"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "time range",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/searchBy/bday?to=1968-08-05&from=1930-08-05",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"searchBy",
+						"bday"
+					],
+					"query": [
+						{
+							"key": "to",
+							"value": "1968-08-05"
+						},
+						{
+							"key": "from",
+							"value": "1930-08-05"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "search by mission names",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/searchBy/missions?missions=විශ්රාමික",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"searchBy",
+						"missions"
+					],
+					"query": [
+						{
+							"key": "missions",
+							"value": "විශ්රාමික"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "facetedSearch",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"term\": \"1960-08-25\", \"filter\" : [ {\"Nationality\" : \"ඇමෙරිකානු\"}, {\"Occupation\": \"නියමු\"}]}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/facetedSearch",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"facetedSearch"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "advancesearch",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"filter\" : [ {\"keyword\" : \"Name\", \"value\": \"ක්ලැරන්ස් විජේවර්ධන\" }, {\"keyword\" : \"Status\", \"value\": \"පැරණි පොප්ස්\" }, {\"keyword\" : \"Nationality\", \"value\": \"ක්ලැරන්ස් විජේවර්ධන\" }, {\"keyword\" : \"Mission_names\", \"value\": \"ක්ලැරන්ස් විජේවර්ධන\" }, {\"keyword\" : \"Selection\", \"value\": \"ක්ලැරන්ස් විජේවර්ධන\" }, {\"keyword\" : \"Summary\", \"value\": \"ක්ලැරන්ස් විජේවර්ධන\" }, {\"keyword\" : \"Occupation\", \"value\": \"ක්ලැරන්ස් විජේවර්ධන\" } ], \"ranges\": [ {\"keyword\" : \"Time\", \"value\": \"ක්ලැරන්ස් විජේවර්ධන\" }, {\"keyword\" : \"BDay\", \"value\": \"පැරණි පොප්ස්\" }]}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/advanceSearch",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"advanceSearch"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
